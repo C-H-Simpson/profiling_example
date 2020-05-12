@@ -1,12 +1,12 @@
 # Profiling - why is my python slow?
 Sometimes, you find the code you write takes unacceptably long to run, and you don't know why.
 *Profiling* means testing what parts of your code are using the most resources.
-In this example, I show you how to use rkern's line profiler, which is a library for profiling python scripts.
+In this example, I show you how to use [rkern's line profiler](https://github.com/pyutils/line_profiler), which is a library for profiling python scripts.
 
 ## Working Example Instructions
 Either:
 * Run the example on the cloud by clicking on this link 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/C-H-Simpson/profiling_example/master)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/C-H-Simpson/profiling_example/master) ( it may take a couple of minutes to start )
 * Or, install the example on your own computer by cloning this repository
 
 Then:
@@ -68,3 +68,9 @@ What part of the code is the slowest? In this case it is `sleep(0.001)` - it tak
 Usually it is not as obvious as this what the slowest part of the code is going to be!
 
 ## Applying this to your own project
+1. You need to install the line profiler. Within the environment for you project, do
+ `pip install line_profiler`
+2. Put `@profile` before the function you want to profile
+3. Run the script via the `kernprof` command, as above
+4. See what parts of the code are taking the most time - could they be written in a different, faster way? 
+5. Ask your colleagues and google search to try and find a better way!
