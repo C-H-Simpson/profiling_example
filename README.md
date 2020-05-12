@@ -5,7 +5,8 @@ In this example, I show you how to use rkern's line profiler, which is a library
 
 ## Working Example Instructions
 Either:
-* Run the example on the cloud by clicking on this link -> [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/C-H-Simpson/profiling_example/master)
+* Run the example on the cloud by clicking on this link 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/C-H-Simpson/profiling_example/master)
 * Or, install the example on your own computer by cloning this repository
 
 Then:
