@@ -44,5 +44,4 @@ dependencies:
     - ptyprocess==0.6.0
     - traitlets==4.3.3
     - wcwidth==0.1.9
-prefix: /home/champs/anaconda3/envs/kprof
 
