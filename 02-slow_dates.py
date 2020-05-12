@@ -1,58 +1,24 @@
 #!/usr/bin/python4
 import line_profiler
 import datetime
-import numpy as np
-
-# set random seed for reproducibility
-np.random.seed(1)
-
-# some random years, months, days
-n_dates = 10000
-years_A = np.random.choice(range(1999, 2010), n_dates)
-months_A = np.random.choice(range(1, 12), n_dates)
-days_A = np.random.choice(range(1, 28), n_dates)
-
-years_B = np.random.choice(range(1999, 2010), n_dates)
-months_B = np.random.choice(range(1, 12), n_dates)
-days_B = np.random.choice(range(1, 28), n_dates)
-
 
 @profile
-def slow_dates():
+def slow_date_midpoint(date_A, date_B, fmt):
     """
-        This routine loops over a two lists of dates, and finds the
-        number of days between them.
-        It is slow because it makes the dates as string objects first, then converts
-        them to datetimes, instead of making datetime objects directly.
     """
-
-    # make dates as strings
-    dates_A = [ '{0}-{1:02d}-{2:02d}'.format(y, m, d) for y, m, d in zip(years_A, months_A, days_A) ]
-    dates_B = [ '{0}-{1:02d}-{2:02d}'.format(y, m, d) for y, m, d in zip(years_B, months_B, days_B) ]
-    total_difference = 0
-
-    for date_A, date_B in zip(dates_A, dates_B):
-        difference = datetime.datetime.strptime(date_A, '%Y-%m-%d') - datetime.datetime.strptime(date_B, '%Y-%m-%d')
-        total_difference += difference / datetime.timedelta(days=1)
-
-    print ('total', total_difference, 'days')
+    return datetime.datetime.strptime(date_A, fmt) \
+            + (datetime.datetime.strptime(date_A, fmt) - datetime.datetime.strptime(date_B, fmt)) / 2
 
 @profile
-def fast_dates():
+def fast_date_midpoint(date_A, date_B):
     """
     """
+    return date_A + (date_A - date_B) / 2
 
-    # make dates as datetime objects
-    dates_A = [  datetime.date(year=y, month=m, day=d) for y, m, d in zip(years_A, months_A, days_A) ]
-    dates_B = [  datetime.date(year=y, month=m, day=d) for y, m, d in zip(years_B, months_B, days_B) ]
-    total_difference = 0
+# do it with strings and strptime
+slow_date_midpoint('1987-01-11', '2001-06-13', '%Y-%m-%d')
 
-    for date_A, date_B in zip(dates_A, dates_B):
-        difference = date_A - date_B
-        total_difference += difference / datetime.timedelta(hours=1)
+# do it with datetimes
+fast_date_midpoint(datetime.datetime(year=1987, month=1, day=11),
+                   datetime.datetime(year=2001, month=6, day=13))
 
-    print ('total', total_difference, 'days')
-
-
-slow_dates()
-fast_dates()
