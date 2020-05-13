@@ -13,7 +13,7 @@ Then:
 * Open a terminal, navigate to the folder with the example
 * Run the command
 	`kernprof -v -l 01-obviously_slow.py`
- `kernprof` is the program that will do the profiling, `-v` means the result will be printed in the terminal instead of to a file, then `-l 01-obviously_slow.py` gives the program the name of the script to be profiled.
+* `kernprof` is the program that will do the profiling, `-v` means the result will be printed in the terminal instead of to a file, then `-l 01-obviously_slow.py` gives the program the name of the script to be profiled.
 * You will see output that looks like this:
 ```
 0 fizz
@@ -57,20 +57,22 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 ```
 
 Let's pick apart what some of this means.
-First comes the output of the program, then the result of the profiling.
+* First comes the output of the program, then the result of the profiling.
 
-We are presented with a table where the time effect of each line is broken down. The first columns shows the line number in the script that we profiled. The last column is the code on that line.
-'Hits' is the number of times that line was executed. The meaning of the other columns should be obvious.
+* We are presented with a table where the time effect of each line is broken down. The first columns shows the line number in the script that we profiled. The last column is the code on that line.
+* 'Hits' is the number of times that line was executed. The meaning of the other columns should be obvious.
 
-What part of the code is the slowest? In this case it is `sleep(0.001)` - it takes 99.3% of the time of the program.
+* What part of the code is the slowest? In this case it is `sleep(0.001)` - it takes 99.3% of the time of the program.
 
 
 Usually it is not as obvious as this what the slowest part of the code is going to be!
 
 ## Applying this to your own project
 1. You need to install the line profiler. Within the environment for you project, do
- `pip install line_profiler`
-2. Put `@profile` before the function you want to profile
-3. Run the script via the `kernprof` command, as above
+  `conda install line_profiler` or `pip install line_profiler` (depending on your environment)
+2. Put `@profile` before the function you want to profile as in the above example.
+3. Run the script via the `kernprof` command, as in the above example.
 4. See what parts of the code are taking the most time - could they be written in a different, faster way? 
 5. Ask your colleagues and google search to try and find a better way!
+
+Think about how fast your code needs to run? Is it OK if it takes a few minutes, a few hours... a few days?
