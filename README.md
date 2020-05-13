@@ -15,7 +15,7 @@ Then:
 	`kernprof -v -l 01-obviously_slow.py`
  `kernprof` is the program that will do the profiling, `-v` means the result will be printed in the terminal instead of to a file, then `-l 01-obviously_slow.py` gives the program the name of the script to be profiled.
 * You will see output that looks like this:
-`
+```
 0 fizz
 0 buzz
 3 fizz
@@ -54,7 +54,7 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
     19                                           
     20                                                   # the following line makes the program wait before continuing
     21        20      39011.0   1950.5     99.3          sleep(0.001)
-`
+```
 
 Let's pick apart what some of this means.
 First comes the output of the program, then the result of the profiling.
