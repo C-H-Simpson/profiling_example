@@ -1,24 +1,33 @@
+"""This is just to demonstrate how the profiler works.
+    It should be obvious what is slowing it down!"""
+
 from time import sleep
 
-
 @profile
-def obviously_slow(n_loops=20):
-    """ This simple program loops through the integers 0-20 and prints,
-        'fizz' if the number is divisible by 3,
+def obviously_slow(n_loops=30):
+    """ This simple program loops through the integers 0-30 and prints
+        'fizz' if the number is divisible by 3, and
         'buzz' if the number is divisible by 5.
         It is made slow by a 'sleep' function.
     """
 
+    output_mapping = (
+        (3, 'fizz'),
+        (5, 'buzz'),
+    )
+
     for i in range(n_loops):
-        # is i divisible by 3?
-        if i % 3 == 0:
-            print(i, 'fizz')
-        if i % 5 == 0:
-            # is i divisible by 5?
-            print(i, 'buzz')
+        output = ''
+        for num, say in output_mapping:
+            if i % num == 0:
+                output = ''.join((output, say))
+        if output == '':
+            output = f'{i}'
+
+        print(output)
 
         # the following line makes the program wait before continuing
-        sleep(0.001)
+        sleep(0.1)
 
 
 obviously_slow()
