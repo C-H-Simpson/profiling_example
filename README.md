@@ -9,7 +9,7 @@ Either:
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/C-H-Simpson/profiling_example/master) ( it may take a couple of minutes to start )
 * Or, install the example on your own computer by cloning this repository
 
-### Example 01
+### Example 01 - how to use the profiler
 * Open a terminal, navigate to the folder with the example
 * Run the command
 	`kernprof -v -l 01-obviously_slow.py`
@@ -92,7 +92,7 @@ Let's pick apart what some of this means.
 
 Usually it is not as obvious as this what the slowest part of the code is going to be!
 
-### Example 2
+### Example 2 - a more realistic example
 * Run the command
 	`kernprof -v -l 02-integration.py`
 * The script '02-integration.py' does a numerical integration of a function.
