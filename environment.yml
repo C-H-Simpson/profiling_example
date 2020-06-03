@@ -3,3 +3,5 @@ channels:
   - defaults
 dependencies:
   - line_profiler
+  - numpy
+  - scipy
