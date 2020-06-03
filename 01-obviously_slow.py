@@ -16,7 +16,7 @@ def obviously_slow(n_loops=30):
         (5, 'buzz'),
     )
 
-    for i in range(n_loops):
+    for i in range(1, n_loops+1):
         output = ''
         for num, say in output_mapping:
             if i % num == 0:
