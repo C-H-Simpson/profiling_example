@@ -5,3 +5,5 @@ dependencies:
   - line_profiler
   - numpy
   - scipy
+  - jupyter
+  - matplotlib
